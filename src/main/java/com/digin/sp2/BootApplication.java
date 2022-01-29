@@ -5,10 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
- * 主程序类
+ * 主程序类/启动类
  * @SpringBootApplication标志着这是一个Springboot应用
+ *
+ * Springboot配置的默认包扫描规则为:主程序类及其同层级目录下的子包
+ * 如果需要手动指定,需要配置注解的scanBasePackages属性
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.digin")
 public class BootApplication {
     public static void main(String[] args) {
         //1.这里的返回值表示IoC容器,包含了当前应用的所有组件
