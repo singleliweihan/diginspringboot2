@@ -1,5 +1,7 @@
 package com.digin.sp2;
 
+import com.digin.sp2.domain.Pet;
+import com.digin.sp2.domain.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -22,6 +24,14 @@ public class BootApplication {
             System.out.println(name);
             //在其中可以找到dispatcherServlet,characterEncodingFilter等
         }
+
+        //3.检验自定义组件
+        System.out.println("自定义组件");
+        User user01 = configContext.getBean("user01", User.class);
+        System.out.println(user01);
+
+        Pet pet = configContext.getBean("petoftom", Pet.class);
+        System.out.println(pet);
 
     }
 }
