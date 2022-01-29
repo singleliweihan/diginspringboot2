@@ -33,5 +33,9 @@ public class BootApplication {
         Pet pet = configContext.getBean("petoftom", Pet.class);
         System.out.println(pet);
 
+        System.out.println("\n\nxml文件配置的bean存在吗:");
+        boolean contains = configContext.containsBean("xml配置的bean");
+        System.out.println(contains);
+
     }
 }

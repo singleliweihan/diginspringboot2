@@ -6,6 +6,7 @@ import com.digin.sp2.domain.User;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +24,7 @@ import java.awt.*;
  *      在没有组件依赖的情况下,采用轻量级模式,保证启动和组件获取更快
  */
 @Configuration(proxyBeanMethods=true)
+@ImportResource("classpath:bean.xml")
 public class MyConfig {
     /**
      * 默认使用方法名作为对象id,也可以通过@Bean的name属性执行
@@ -30,12 +32,12 @@ public class MyConfig {
      *这里默认都是单例
      */
     @Bean
-    @ConditionalOnBean(name = "petoftom")
     public User user01(){
         return new User("Tom01",11);
     }
 
     @Bean("petoftom")
+    @ConditionalOnBean(name = "user01") //带条件的组件注册
     public Pet pet01(){
         return new Pet("阿狗","狗崽子");
     }
@@ -60,6 +62,8 @@ public class MyConfig {
      *                  @ConditionalOnMissingBean
      *
      *
+     *
+     * @ImportResource  原生配置文件引入,贴在任意配置类上--让xml配置的能够生效,
      */
 
 }
