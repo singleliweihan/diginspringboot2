@@ -7,7 +7,7 @@
     <groupId>org.digin.springboot2</groupId>
     <artifactId>diginspringboot2</artifactId>
     <version>1.0.0</version>
-<!--    通过指定父工程为springboot使maven项目成为springboot项目-->
+    <!--    通过指定父工程为springboot使maven项目成为springboot项目-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -15,12 +15,22 @@
     </parent>
 
     <dependencies>
-<!--        进行web场景开发需要用到的包-->
+        <!--        进行web场景开发需要用到的包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
+    <build>
+        <!--        简化部署,直接在lifecycle中先clean,然后package,
+        得到target中的jar包,可直接运行-->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
