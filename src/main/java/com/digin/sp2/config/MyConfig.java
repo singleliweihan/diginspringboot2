@@ -3,8 +3,13 @@ package com.digin.sp2.config;
 
 import com.digin.sp2.domain.Pet;
 import com.digin.sp2.domain.User;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import java.awt.*;
 
 /**
  *@Configuration标志着这是一个配置类
@@ -25,6 +30,7 @@ public class MyConfig {
      *这里默认都是单例
      */
     @Bean
+    @ConditionalOnBean(name = "petoftom")
     public User user01(){
         return new User("Tom01",11);
     }
@@ -33,4 +39,27 @@ public class MyConfig {
     public Pet pet01(){
         return new Pet("阿狗","狗崽子");
     }
+
+
+
+    /**
+     * 给容器添加组件的方式
+     * @Bean
+     * @Component @Controller
+     * @Service  @Repository
+     *
+     * @ComponentScan
+     *
+     * @Import({A.class,b.class})
+     * 只能用在其他组件上（通过上前面五种方式如@Controller等添加的组件类上）
+     *  调用无参构造器创建A和B的对象，默认组件id是全限定名
+     *
+     *
+     * @Conditional 根注解,贴方法或者类,满足指定条件的时候才注册这个注解贴的组件
+     *      派生注解    @ConditionalOnBean(name = "petoftom")
+     *                  @ConditionalOnMissingBean
+     *
+     *
+     */
+
 }
