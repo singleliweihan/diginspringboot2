@@ -24,7 +24,9 @@
 
     <build>
         <!--        简化部署,直接在lifecycle中先clean,然后package,
-        得到target中的jar包,可直接运行-->
+        得到target中的jar包,可直接运行
+
+        注意:运行的时候要取消cmd的快速编辑模式(属性-编辑选项-快速编辑),否则可能导致卡住-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
