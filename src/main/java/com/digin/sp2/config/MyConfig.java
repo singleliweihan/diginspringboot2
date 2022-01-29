@@ -7,10 +7,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
-import java.awt.*;
 
 /**
  *@Configuration标志着这是一个配置类
@@ -24,7 +20,7 @@ import java.awt.*;
  *      在没有组件依赖的情况下,采用轻量级模式,保证启动和组件获取更快
  */
 @Configuration(proxyBeanMethods=true)
-@ImportResource("classpath:bean.xml")
+@ImportResource("classpath:bean.xml") //导入Spring的配置文件,让他生效
 public class MyConfig {
     /**
      * 默认使用方法名作为对象id,也可以通过@Bean的name属性执行
